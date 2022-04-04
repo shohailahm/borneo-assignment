@@ -8,7 +8,7 @@ export const ExpenseContext = React.createContext({
 });
 
 const ExpenseContextProvider = ({ children }) => {
-  const [expenses, setExpense] = useState(null);
+  const [expenses, setExpense] = useState([]);
 
   const getData = async () => {
     let res = await axiosInstance.get("/");
@@ -16,19 +16,20 @@ const ExpenseContextProvider = ({ children }) => {
     setExpense(
       res.data.Items.map((data) => {
         return {
-          expenseId: data.expenseId.N,
+          expenseId: Number(data.expenseId.N),
           date: data.date.S,
           expense: data.expense.N,
           expenseType: data.expenseType.S,
         };
-      })
+      }).sort((a, b) =>
+        a.expenseId > b.expenseId ? 1 : b.expenseId > a.expenseId ? -1 : 0
+      )
     );
   };
 
   const addExpense = async (data) => {
     try {
-      let lastId =
-        expenses.length > 0 ? expenses[expenses.length - 1].expenseId : 1;
+      let lastId = expenses.length > 0 ? [expenses.length - 1].expenseId : 1;
       data["id"] = Number(lastId) + 1;
       await axiosInstance.put("/", JSON.stringify(data));
       getData();
