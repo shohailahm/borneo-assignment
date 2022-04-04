@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../Input";
 import Button from "./../Button";
-import { getPoolData } from "./../../utils/index";
 import OtpInput from "react-otp-input";
 import { Auth } from "aws-amplify";
 

@@ -20,7 +20,7 @@ const UserContextProvider = ({ children }) => {
       return navigate("/login");
     };
     checkUser();
-  }, []);
+  }, [navigate]);
 
   return (
     <UserContext.Provider value={{ user: user, setUser: setUser }}>

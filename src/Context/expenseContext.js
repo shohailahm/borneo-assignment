@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosInstance } from "./../utils/axios";
 
 export const ExpenseContext = React.createContext({

@@ -11,7 +11,7 @@ export default function Home() {
   const context = useContext(ExpenseContext);
   useEffect(() => {
     context.getExpense();
-  }, []);
+  }, [context]);
 
   const deleteRow = (data) => {
     context.deleteExpense(data).then(() => {

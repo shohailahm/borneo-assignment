@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContextProvider, { UserContext } from "./Context/userContext";
 import { Amplify } from "aws-amplify";
 import ExpenseContextProvider from "./Context/expenseContext";
-import { useContext } from "react";
 
 Amplify.configure({
   region: "us-east-2",
@@ -13,7 +12,6 @@ Amplify.configure({
 });
 
 function App() {
-  const context = useContext(UserContext);
   return (
     <BrowserRouter>
       <div className="App">
